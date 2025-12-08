@@ -18,6 +18,7 @@
       padding: 0;
     }
 
+    /* Page Transitions */
     .page-content {
       display: none;
       opacity: 0;
@@ -39,6 +40,7 @@
       }
     }
 
+    /* Advanced Animations */
     @keyframes float {
       0%, 100% {
         transform: translateY(0px);
@@ -46,10 +48,6 @@
       50% {
         transform: translateY(-20px);
       }
-    }
-
-    .animate-float {
-      animation: float 3s ease-in-out infinite;
     }
 
     @keyframes pulse {
@@ -105,6 +103,132 @@
       }
     }
 
+    @keyframes shimmer {
+      0% {
+        background-position: -1000px 0;
+      }
+      100% {
+        background-position: 1000px 0;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      70% {
+        transform: scale(0.9);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(102, 126, 234, 0.6);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .animate-slide-in-left {
+      animation: slideInLeft 0.8s ease-out;
+    }
+
+    .animate-slide-in-right {
+      animation: slideInRight 0.8s ease-out;
+    }
+
+    .animate-bounce-in {
+      animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .glow-effect {
+      animation: glow 3s ease-in-out infinite;
+    }
+
+    @keyframes slideInFromLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInFromRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Animation Classes */
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+
     .pulse-element {
       animation: pulse 2.5s ease-in-out infinite;
     }
@@ -127,6 +251,7 @@
       transform-origin: center;
     }
 
+    /* Icon Effects */
     .icon-container {
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
@@ -144,6 +269,7 @@
       filter: drop-shadow(0 8px 16px rgba(102, 126, 234, 0.4));
     }
 
+    /* Text Effects */
     .gradient-text {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       -webkit-background-clip: text;
@@ -151,11 +277,13 @@
       background-clip: text;
     }
 
+    /* Card Styles */
     .service-card, .location-card {
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
       cursor: pointer;
+      border: 1px solid rgba(102, 126, 234, 0.1);
     }
 
     .service-card::before, .location-card::before {
@@ -165,8 +293,8 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-      transition: left 0.5s;
+      background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+      transition: left 0.6s ease-in-out;
     }
 
     .service-card:hover::before, .location-card:hover::before {
@@ -175,13 +303,35 @@
 
     .service-card:hover, .location-card:hover {
       transform: translateY(-12px) scale(1.02);
-      box-shadow: 0 25px 50px rgba(102, 126, 234, 0.3);
+      box-shadow: 0 25px 50px rgba(102, 126, 234, 0.25);
+      border-color: rgba(102, 126, 234, 0.3);
     }
 
+    /* Enhanced Card Styling */
+    .service-card::after, .location-card::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+      border-radius: inherit;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .service-card:hover::after, .location-card:hover::after {
+      opacity: 0.2;
+    }
+
+    /* Button Styles */
     .btn-primary {
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
     }
 
     .btn-primary::before {
@@ -192,7 +342,7 @@
       width: 0;
       height: 0;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.3);
       transform: translate(-50%, -50%);
       transition: width 0.6s, height 0.6s;
     }
@@ -203,23 +353,47 @@
     }
 
     .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-primary:active {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
     }
 
     .btn-secondary {
       transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-secondary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-secondary:hover::before {
+      left: 100%;
     }
 
     .btn-secondary:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
 
+    /* Navigation Styles */
     .nav-link {
       position: relative;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
       cursor: pointer;
+      padding: 8px 4px;
     }
 
     .nav-link::after {
@@ -228,18 +402,25 @@
       bottom: -4px;
       left: 0;
       width: 0;
-      height: 2px;
-      background: #667eea;
+      height: 3px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
       transition: width 0.3s ease;
+      border-radius: 2px;
     }
 
     .nav-link:hover::after, .nav-link.active::after {
       width: 100%;
     }
 
+    .nav-link:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
     .hero-gradient {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
       position: relative;
+      overflow: hidden;
     }
 
     .hero-gradient::before {
@@ -251,20 +432,167 @@
       bottom: 0;
       background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect fill="rgba(255,255,255,0.03)" width="50" height="50"/><rect fill="rgba(255,255,255,0.03)" x="50" y="50" width="50" height="50"/></svg>');
       opacity: 0.5;
+      animation: shimmer 20s linear infinite;
     }
 
+    .hero-gradient::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: float 15s ease-in-out infinite;
+    }
+
+    /* Glass Effect */
     .glass-effect {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     }
 
+    /* Stats Section */
     .stat-number {
       font-size: 3rem;
       font-weight: 800;
       line-height: 1;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
     }
 
+    #stats-section > div > div {
+      animation: scaleIn 0.6s ease-out backwards;
+    }
+
+    #stats-section > div > div:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    #stats-section > div > div:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    #stats-section > div > div:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    #stats-section > div > div:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    /* Language Button Styles */
+    .lang-btn {
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .lang-btn:hover {
+      transform: scale(1.05);
+      border-color: #667eea;
+    }
+
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #764ba2, #667eea);
+    }
+
+    /* Enhanced Focus States */
+    button:focus, a:focus {
+      outline: 2px solid #667eea;
+      outline-offset: 2px;
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Parallax Effect */
+    .parallax-layer {
+      transition: transform 0.3s ease-out;
+      will-change: transform;
+    }
+
+    /* Stagger Animation Delays */
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
+    .stagger-5 { animation-delay: 0.5s; }
+    .stagger-6 { animation-delay: 0.6s; }
+
+    /* Hover Lift Effect */
+    .hover-lift {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Gradient Text Animation */
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .animated-gradient-text {
+      background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #667eea);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 5s ease infinite;
+    }
+
+    /* Blob Animation */
+    @keyframes blob {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      25% {
+        transform: translate(20px, -20px) scale(1.1);
+      }
+      50% {
+        transform: translate(-20px, 20px) scale(0.9);
+      }
+      75% {
+        transform: translate(20px, 20px) scale(1.05);
+      }
+    }
+
+    .blob-animation {
+      animation: blob 8s ease-in-out infinite;
+    }
+
+    /* Responsive Typography */
     @media (max-width: 768px) {
       .stat-number {
         font-size: 2rem;
@@ -293,6 +621,18 @@
         padding: 1rem 2rem !important;
       }
     }
+
+    /* Print Styles */
+    @media print {
+      .hero-gradient, #navbar, #footer {
+        background: white !important;
+        color: black !important;
+      }
+      
+      .service-card, .location-card {
+        break-inside: avoid;
+      }
+    }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -307,113 +647,287 @@
         Maghanim Medical Co LLC
        </div>
        <div class="text-xs opacity-75" id="tagline-nav">
-        Healthcare Excellence Since 2024
+        Healthcare Excellence Since 2020
        </div>
       </div>
      </div>
-     <div class="hidden md:flex space-x-8"><a class="nav-link font-medium" data-page="home" onclick="navigateToPage('home')">Home</a> <a class="nav-link font-medium" data-page="clinics" onclick="navigateToPage('clinics')">Clinics</a> <a class="nav-link font-medium" data-page="pharmacies" onclick="navigateToPage('pharmacies')">Pharmacies</a> <a class="nav-link font-medium" data-page="services" onclick="navigateToPage('services')">Services</a> <a class="nav-link font-medium" data-page="contact" onclick="navigateToPage('contact')">Contact</a>
+     <div class="hidden md:flex space-x-8 items-center"><a class="nav-link font-medium" data-page="home" onclick="navigateToPage('home')">Home</a> <a class="nav-link font-medium" data-page="clinics" onclick="navigateToPage('clinics')">Clinics</a> <a class="nav-link font-medium" data-page="pharmacies" onclick="navigateToPage('pharmacies')">Pharmacies</a> <a class="nav-link font-medium" data-page="services" onclick="navigateToPage('services')">Services</a> <a class="nav-link font-medium" data-page="contact" onclick="navigateToPage('contact')">Contact</a>
+      <div class="flex items-center space-x-2 ml-4"><button onclick="changeLanguage('en')" id="lang-en" class="lang-btn px-3 py-1 rounded-lg font-medium transition-all" style="background-color: #667eea; color: white;">EN</button> <button onclick="changeLanguage('ar')" id="lang-ar" class="lang-btn px-3 py-1 rounded-lg font-medium transition-all">AR</button>
+      </div>
      </div><button class="md:hidden" onclick="toggleMobileMenu()">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg></button>
     </div><!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2"><a class="block nav-link py-2" onclick="navigateToPage('home')">Home</a> <a class="block nav-link py-2" onclick="navigateToPage('clinics')">Clinics</a> <a class="block nav-link py-2" onclick="navigateToPage('pharmacies')">Pharmacies</a> <a class="block nav-link py-2" onclick="navigateToPage('services')">Services</a> <a class="block nav-link py-2" onclick="navigateToPage('contact')">Contact</a>
+     <div class="flex items-center space-x-2 pt-4 border-t"><button onclick="changeLanguage('en')" id="lang-en-mobile" class="lang-btn px-4 py-2 rounded-lg font-medium transition-all flex-1" style="background-color: #667eea; color: white;">English</button> <button onclick="changeLanguage('ar')" id="lang-ar-mobile" class="lang-btn px-4 py-2 rounded-lg font-medium transition-all flex-1">العربية</button>
+     </div>
     </div>
    </div>
   </nav><!-- HOME PAGE -->
   <div id="home-page" class="page-content active"><!-- Hero Section -->
-   <section class="w-full hero-gradient pt-32 pb-24 relative" id="hero">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+   <section class="w-full hero-gradient pt-40 pb-40 relative min-h-screen flex items-center" id="hero">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
      <div class="text-center">
-      <h1 class="text-5xl md:text-7xl font-black mb-6 text-white leading-tight" id="hero-title">Transforming Healthcare Through Innovation</h1>
-      <p class="text-xl md:text-2xl mb-10 text-white opacity-95 max-w-3xl mx-auto" id="hero-subtitle">Comprehensive medical services, premium pharmacies, and cutting-edge security solutions</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center"><button onclick="navigateToPage('services')" class="btn-primary px-8 py-4 rounded-full font-bold text-lg relative z-10" id="cta-primary"> Explore Our Services </button> <button onclick="navigateToPage('contact')" class="btn-secondary px-8 py-4 rounded-full font-bold text-lg" id="cta-secondary"> Contact Us Today </button>
+      <div class="mb-8 inline-block px-6 py-3 rounded-full" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(10px);"><span class="text-white font-semibold text-lg"> Leading Healthcare Provider Since 2024</span>
+      </div>
+      <h1 class="text-6xl md:text-8xl font-black mb-8 text-white leading-tight animate-fade-in-up" id="hero-title">Transforming Healthcare Through <span class="animated-gradient-text" style="-webkit-text-fill-color: white;">Innovation</span></h1>
+      <p class="text-2xl md:text-3xl mb-12 text-white opacity-95 max-w-4xl mx-auto leading-relaxed" id="hero-subtitle">Comprehensive medical services, premium pharmacies, and cutting-edge security solutions</p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"><button onclick="navigateToPage('services')" class="btn-primary px-12 py-6 rounded-full font-bold text-xl relative z-10 shadow-2xl glow-effect" id="cta-primary"> Explore Our Services </button> <button onclick="navigateToPage('contact')" class="btn-secondary px-12 py-6 rounded-full font-bold text-xl shadow-xl hover-lift" id="cta-secondary"> Contact Us Today </button>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto mt-16">
+       <div class="text-white">
+        <div class="text-5xl font-black mb-2">
+         6
+        </div>
+        <div class="text-lg opacity-90">
+         Locations
+        </div>
+       </div>
+       <div class="text-white">
+        <div class="text-5xl font-black mb-2">
+         10K+
+        </div>
+        <div class="text-lg opacity-90">
+         Patients
+        </div>
+       </div>
+       <div class="text-white">
+        <div class="text-5xl font-black mb-2">
+         15+
+        </div>
+        <div class="text-lg opacity-90">
+         Years
+        </div>
+       </div>
+       <div class="text-white">
+        <div class="text-5xl font-black mb-2">
+         50+
+        </div>
+        <div class="text-lg opacity-90">
+         Experts
+        </div>
+       </div>
       </div>
      </div>
     </div>
-   </section><!-- Stats Section -->
-   <section class="w-full py-16" id="stats-section">
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+     <svg class="w-8 h-8 text-white opacity-75" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+     </svg>
+    </div>
+   </section><!-- Features Banner -->
+   <section class="w-full py-20 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 relative overflow-hidden" id="stats-section">
+    <div class="absolute inset-0 opacity-30 blob-animation" style="background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.2) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(118, 75, 162, 0.2) 0%, transparent 50%);"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-      <div class="text-center">
-       <div class="stat-number gradient-text mb-2">
-        6
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="flex items-start space-x-4 p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all">
+       <div class="flex-shrink-0">
+        <div class="w-16 h-16 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+         </svg>
+        </div>
        </div>
-       <div class="text-lg font-semibold opacity-75">
-        Locations
-       </div>
-      </div>
-      <div class="text-center">
-       <div class="stat-number gradient-text mb-2">
-        10K+
-       </div>
-       <div class="text-lg font-semibold opacity-75">
-        Happy Customers
+       <div>
+        <h3 class="text-xl font-bold mb-2">Certified Excellence</h3>
+        <p class="text-gray-600">Licensed healthcare professionals and certified facilities</p>
        </div>
       </div>
-      <div class="text-center">
-       <div class="stat-number gradient-text mb-2">
-        15+
+      <div class="flex items-start space-x-4 p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all">
+       <div class="flex-shrink-0">
+        <div class="w-16 h-16 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+         </svg>
+        </div>
        </div>
-       <div class="text-lg font-semibold opacity-75">
-        Years Experience
+       <div>
+        <h3 class="text-xl font-bold mb-2">24/7 Availability</h3>
+        <p class="text-gray-600">Round-the-clock emergency care and support services</p>
        </div>
       </div>
-      <div class="text-center">
-       <div class="stat-number gradient-text mb-2">
-        50+
+      <div class="flex items-start space-x-4 p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all">
+       <div class="flex-shrink-0">
+        <div class="w-16 h-16 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+         </svg>
+        </div>
        </div>
-       <div class="text-lg font-semibold opacity-75">
-        Team Members
+       <div>
+        <h3 class="text-xl font-bold mb-2">Advanced Technology</h3>
+        <p class="text-gray-600">Modern equipment and cutting-edge medical solutions</p>
        </div>
       </div>
      </div>
     </div>
    </section><!-- Services Overview -->
-   <section class="w-full py-24" id="services-overview">
+   <section class="w-full py-32" id="services-overview">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="text-center mb-16">
-      <h2 class="text-5xl font-black mb-4" id="services-overview-heading">Our Services</h2>
+     <div class="text-center mb-20">
+      <div class="inline-block px-6 py-2 rounded-full mb-6" style="background: linear-gradient(135deg, #667eea20, #764ba220); border: 2px solid #667eea40;"><span class="font-bold" style="color: #667eea;">What We Offer</span>
+      </div>
+      <h2 class="text-6xl md:text-7xl font-black mb-6" id="services-overview-heading">Our Services</h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">Comprehensive healthcare solutions designed to meet all your medical, pharmaceutical, and security needs</p>
      </div>
-     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-      <div class="service-card rounded-2xl p-10 shadow-xl" id="home-clinics-card" onclick="navigateToPage('clinics')">
-       <div class="mb-6">
-        <div class="w-24 h-24 rounded-2xl flex items-center justify-center mx-auto mb-6 icon-container" id="home-clinics-icon-bg">
-         <svg class="w-14 h-14 icon-svg" id="home-clinics-icon" viewbox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="26" y="12" width="12" height="40" rx="2" fill="currentColor" class="pulse-element" /> <rect x="12" y="26" width="40" height="12" rx="2" fill="currentColor" class="pulse-element" style="animation-delay: 0.2s" /> <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="2" opacity="0.2" class="rotate-slow" /> <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width="2" opacity="0.3" class="rotate-reverse" />
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div class="service-card rounded-3xl p-12 shadow-2xl transform hover:-translate-y-4 transition-all duration-500 hover-lift stagger-1 cursor-pointer" id="home-clinics-card" onclick="navigateToPage('clinics')" style="opacity: 0; animation: fadeInUp 0.8s ease-out 0.2s forwards;">
+       <div class="mb-8">
+        <div class="w-32 h-32 rounded-3xl flex items-center justify-center mx-auto mb-8 icon-container" id="home-clinics-icon-bg">
+         <svg class="w-20 h-20 icon-svg" id="home-clinics-icon" viewbox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="26" y="12" width="12" height="40" rx="2" fill="currentColor" class="pulse-element" /> <rect x="12" y="26" width="40" height="12" rx="2" fill="currentColor" class="pulse-element" style="animation-delay: 0.2s" /> <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="2" opacity="0.2" class="rotate-slow" /> <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width="2" opacity="0.3" class="rotate-reverse" />
          </svg>
         </div>
        </div>
-       <h3 class="text-3xl font-bold text-center mb-3">Medical Clinics</h3>
-       <div class="text-center mb-4 font-bold text-2xl" style="color: #667eea;">
+       <h3 class="text-4xl font-black text-center mb-4">Medical Clinics</h3>
+       <div class="text-center mb-6 font-bold text-3xl" style="color: #667eea;">
         2 Locations
        </div>
-       <p class="text-center text-lg leading-relaxed">State-of-the-art medical facilities with experienced healthcare professionals</p>
+       <p class="text-center text-xl leading-relaxed text-gray-600 mb-8">State-of-the-art medical facilities with experienced healthcare professionals</p>
+       <div class="flex justify-center"><span class="inline-flex items-center px-6 py-3 rounded-full font-semibold" style="background: linear-gradient(135deg, #667eea20, #764ba220); color: #667eea;"> Learn More → </span>
+       </div>
       </div>
-      <div class="service-card rounded-2xl p-10 shadow-xl" id="home-pharmacies-card" onclick="navigateToPage('pharmacies')">
-       <div class="mb-6">
-        <div class="w-24 h-24 rounded-2xl flex items-center justify-center mx-auto mb-6 icon-container" id="home-pharmacies-icon-bg">
-         <svg class="w-14 h-14 icon-svg" id="home-pharmacies-icon" viewbox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 8C25 8 20 13 20 20v6h24v-6c0-7-5-12-12-12z" fill="currentColor" opacity="0.3" class="float-gentle" /> <rect x="14" y="26" width="36" height="26" rx="4" fill="currentColor" class="pulse-element" /> <circle cx="32" cy="39" r="4" fill="white" opacity="0.8" class="pulse-element" style="animation-delay: 0.3s" /> <path d="M28 22h8M32 18v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.4" class="float-gentle" style="animation-delay: 0.2s" />
+      <div class="service-card rounded-3xl p-12 shadow-2xl transform hover:-translate-y-4 transition-all duration-500 hover-lift stagger-2 cursor-pointer" id="home-pharmacies-card" onclick="navigateToPage('pharmacies')" style="opacity: 0; animation: fadeInUp 0.8s ease-out 0.4s forwards;">
+       <div class="mb-8">
+        <div class="w-32 h-32 rounded-3xl flex items-center justify-center mx-auto mb-8 icon-container" id="home-pharmacies-icon-bg">
+         <svg class="w-20 h-20 icon-svg" id="home-pharmacies-icon" viewbox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 8C25 8 20 13 20 20v6h24v-6c0-7-5-12-12-12z" fill="currentColor" opacity="0.3" class="float-gentle" /> <rect x="14" y="26" width="36" height="26" rx="4" fill="currentColor" class="pulse-element" /> <circle cx="32" cy="39" r="4" fill="white" opacity="0.8" class="pulse-element" style="animation-delay: 0.3s" /> <path d="M28 22h8M32 18v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.4" class="float-gentle" style="animation-delay: 0.2s" />
          </svg>
         </div>
        </div>
-       <h3 class="text-3xl font-bold text-center mb-3">Premium Pharmacies</h3>
-       <div class="text-center mb-4 font-bold text-2xl" style="color: #667eea;">
+       <h3 class="text-4xl font-black text-center mb-4">Premium Pharmacies</h3>
+       <div class="text-center mb-6 font-bold text-3xl" style="color: #667eea;">
         3 Locations
        </div>
-       <p class="text-center text-lg leading-relaxed">Certified pharmacists providing quality medications and health consultations</p>
+       <p class="text-center text-xl leading-relaxed text-gray-600 mb-8">Certified pharmacists providing quality medications and health consultations</p>
+       <div class="flex justify-center"><span class="inline-flex items-center px-6 py-3 rounded-full font-semibold" style="background: linear-gradient(135deg, #667eea20, #764ba220); color: #667eea;"> Learn More → </span>
+       </div>
       </div>
-      <div class="service-card rounded-2xl p-10 shadow-xl" id="home-cctv-card" onclick="navigateToPage('services')">
-       <div class="mb-6">
-        <div class="w-24 h-24 rounded-2xl flex items-center justify-center mx-auto mb-6 icon-container" id="home-cctv-icon-bg">
-         <svg class="w-14 h-14 icon-svg" id="home-cctv-icon" viewbox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="16" width="24" height="18" rx="3" fill="currentColor" opacity="0.3" class="pulse-element" /> <circle cx="32" cy="25" r="6" stroke="currentColor" stroke-width="2.5" fill="none" class="pulse-ring" /> <circle cx="32" cy="25" r="3" fill="currentColor" class="pulse-element" style="animation-delay: 0.2s" /> <path d="M32 34v8M26 42h12M28 48h8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.6" class="float-gentle" /> <path d="M15 22l-4-4M49 22l4-4M20 12l2-4M44 12l-2-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.3" class="pulse-element" style="animation-delay: 0.4s" />
+      <div class="service-card rounded-3xl p-12 shadow-2xl transform hover:-translate-y-4 transition-all duration-500 hover-lift stagger-3" id="home-cctv-card" style="opacity: 0; animation: fadeInUp 0.8s ease-out 0.6s forwards;">
+       <div class="mb-8">
+        <div class="w-32 h-32 rounded-3xl flex items-center justify-center mx-auto mb-8 icon-container" id="home-cctv-icon-bg">
+         <svg class="w-20 h-20 icon-svg" id="home-cctv-icon" viewbox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="16" width="24" height="18" rx="3" fill="currentColor" opacity="0.3" class="pulse-element" /> <circle cx="32" cy="25" r="6" stroke="currentColor" stroke-width="2.5" fill="none" class="pulse-ring" /> <circle cx="32" cy="25" r="3" fill="currentColor" class="pulse-element" style="animation-delay: 0.2s" /> <path d="M32 34v8M26 42h12M28 48h8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.6" class="float-gentle" /> <path d="M15 22l-4-4M49 22l4-4M20 12l2-4M44 12l-2-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.3" class="pulse-element" style="animation-delay: 0.4s" />
          </svg>
         </div>
        </div>
-       <h3 class="text-3xl font-bold text-center mb-3">Security Solutions</h3>
-       <div class="text-center mb-4 font-bold text-2xl" style="color: #667eea;">
+       <h3 class="text-4xl font-black text-center mb-4">Security Solutions</h3>
+       <div class="text-center mb-6 font-bold text-3xl" style="color: #667eea;">
         2 Locations
        </div>
-       <p class="text-center text-lg leading-relaxed">CCTV shop &amp; Digital marketing services</p>
+       <p class="text-center text-xl leading-relaxed text-gray-600 mb-8">CCTV shop &amp; Digital marketing services</p>
+       <div class="flex justify-center"><span class="inline-flex items-center px-6 py-3 rounded-full font-semibold" style="background: linear-gradient(135deg, #667eea20, #764ba220); color: #667eea;"> Learn More → </span>
+       </div>
       </div>
+     </div>
+    </div>
+   </section><!-- Testimonials Section -->
+   <section class="w-full py-32 bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-20">
+      <div class="inline-block px-6 py-2 rounded-full mb-6" style="background: linear-gradient(135deg, #667eea20, #764ba220); border: 2px solid #667eea40;"><span class="font-bold" style="color: #667eea;">Patient Testimonials</span>
+      </div>
+      <h2 class="text-6xl md:text-7xl font-black mb-6">What Our Patients Say</h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">Real stories from real people who trust us with their healthcare</p>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2">
+       <div class="flex items-center mb-6">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-2xl font-bold" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+         MAO
+        </div>
+        <div class="ml-4">
+         <div class="font-bold text-xl">
+          M A O
+         </div>
+         <div class="flex items-center mt-1">
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
+           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
+           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
+           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
+           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
+           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+         </div>
+        </div>
+       </div>
+       <p class="text-gray-700 text-lg leading-relaxed">" زرت هذا المجمع الرائع  الذي سوف تكتشف ان لديه ادارة حكيمة في التنظيم و اختيار الكوادر  بدقة وعناية ، وخصوصا في قسم الأسنان 
+فلفت انتباهي منذ دخول المجمع حسن تعامل الموظفين في الاستقبال وكذلك رجل الامن المحترم ،وبعد دخولي على طبيب الأسنان انبهرت اكثر من الدكتور نواف الذي استقبلني بإبتسامة وترحيب إضافة الى احترافية في التشخيص ودقة في العلاج .
+انصح بزيارة هذا المجمع وخصوصا د نواف فقد قام بخلع أحد الأضراس دون الم وبكل سهولة رغم المعاناة السابقة مع مراكز أخرى .
+ "</p>
+      </div>
+      <div class="bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2">
+       <div class="flex items-center mb-6">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-2xl font-bold" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+         IAU
+        </div>
+        <div class="ml-4">
+         <div class="font-bold text-xl">
+          Iqbal Anab uddin
+         </div>
+         <div class="flex items-center mt-1">
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
+           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
+           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
+           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
+           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
+           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+         </div>
+        </div>
+       </div>
+       <p class="text-gray-700 text-lg leading-relaxed">"Dose clinic Laboratory is one of the best laboratory in Taif for the quality, accuracy and speed of the tests as well. I would also like to thank Dr. Noor muhammad for her cooperation and advice regarding the tests in all honesty.. he is a very classy person and has a nice attitude.
+Dose clinic is lucky to have Dr. Noor muhammad
+Thank you to those responsible for the quality and selection of specialists like his  in the work"</p>
+      </div>
+      <div class="bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2">
+       <div class="flex items-center mb-6">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-2xl font-bold" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+         SB
+        </div>
+        <div class="ml-4">
+         <div class="font-bold text-xl">
+          shady Bassyouni
+         </div>
+         <div class="flex items-center mt-1">
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
+           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
+           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
+           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
+           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
+           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+         </div>
+        </div>
+       </div>
+       <p class="text-gray-700 text-lg leading-relaxed">"خدمة ممتازة واسعار تحفة فعلا افضل من اماكن كتير وخدمة احترافية والصيدلي يفضل موجود معاك وبيعرفك تفاصيل كل منتج فعلا خدمة فوق الممتازة
+"</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- CTA Section -->
+   <section class="w-full py-32 hero-gradient">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+     <h2 class="text-5xl md:text-6xl font-black text-white mb-8">Ready to Experience Better Healthcare?</h2>
+     <p class="text-2xl text-white opacity-95 mb-12 max-w-3xl mx-auto">Join thousands of satisfied patients who trust Maghanim Medical Co for their healthcare needs</p>
+     <div class="flex flex-col sm:flex-row gap-6 justify-center items-center"><button onclick="navigateToPage('contact')" class="btn-primary px-12 py-6 rounded-full font-bold text-xl shadow-2xl"> Book an Appointment </button> <button onclick="navigateToPage('clinics')" class="bg-white text-purple-600 px-12 py-6 rounded-full font-bold text-xl shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1"> Find a Location </button>
      </div>
     </div>
    </section>
@@ -451,10 +965,13 @@
            Hours:
           </div>
           <div>
-           Mon-Fri: 8:00 AM - 8:00 PM
+           Sat-Wed: 7:00 AM - 2:00 AM
+          </div>
+            <div>
+            Thursday: 7:00 AM - 12:00 AM
           </div>
           <div>
-           Sat-Sun: 9:00 AM - 5:00 PM
+           Firday: 4:00 PM - 12:00 AM
           </div>
          </div>
         </div>
@@ -494,13 +1011,13 @@
            Hours:
           </div>
           <div>
-           Mon-Fri: 7:30 AM - 7:00 PM
+           Sat-Wed: 7:00 AM - 2:00 AM
+          </div>
+            <div>
+            Thursday : 7:00 AM - 12:00 AM
           </div>
           <div>
-           Sat: 9:00 AM - 4:00 PM
-          </div>
-          <div>
-           Sun: Closed
+           Firday: 4:00 PM - 12:00 AM
           </div>
          </div>
         </div>
@@ -540,11 +1057,11 @@
        <div class="space-y-3">
         <div class="flex items-start space-x-3">
          <svg class="w-5 h-5 mt-1 flex-shrink-0" style="color: #667eea;" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /> <circle cx="12" cy="10" r="3" />
-         </svg><span id="pharmacy-1-address">789 Main Street, Central Plaza</span>
+         </svg><span id="pharmacy-1-address">شارع الستين, Almudhbah, Taif 26576</span>
         </div>
         <div class="flex items-center space-x-3">
          <svg class="w-5 h-5 flex-shrink-0" style="color: #667eea;" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-         </svg><span id="pharmacy-1-phone">+1 (555) 345-6789</span>
+         </svg><span id="pharmacy-1-phone">+966533326225</span>
         </div>
         <div class="flex items-start space-x-3">
          <svg class="w-5 h-5 mt-1 flex-shrink-0" style="color: #667eea;" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /> <polyline points="12 6 12 12 16 14"></polyline>
@@ -554,10 +1071,13 @@
            Hours:
           </div>
           <div class="text-sm">
-           Mon-Sat: 8 AM - 10 PM
+           Sat-Wed: 7:00 AM - 2:00 AM
           </div>
-          <div class="text-sm">
-           Sun: 9 AM - 8 PM
+            <div>
+            Thur: 7:00 AM - 12:00 AM
+          </div>
+          <div>
+           Firday: 4:00 PM - 12:00 AM
           </div>
          </div>
         </div>
@@ -572,11 +1092,11 @@
        <div class="space-y-3">
         <div class="flex items-start space-x-3">
          <svg class="w-5 h-5 mt-1 flex-shrink-0" style="color: #667eea;" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /> <circle cx="12" cy="10" r="3" />
-         </svg><span id="pharmacy-2-address">321 North Road, Business District</span>
+         </svg><span id="pharmacy-2-address">TASB5064 Building No:5064 secondary No:6563 Al Sultanah Dist. At Taif</span>
         </div>
         <div class="flex items-center space-x-3">
          <svg class="w-5 h-5 flex-shrink-0" style="color: #667eea;" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-         </svg><span id="pharmacy-2-phone">+1 (555) 456-7890</span>
+         </svg><span id="pharmacy-2-phone">+966566257866</span>
         </div>
         <div class="flex items-start space-x-3">
          <svg class="w-5 h-5 mt-1 flex-shrink-0" style="color: #667eea;" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /> <polyline points="12 6 12 12 16 14"></polyline>
@@ -586,10 +1106,10 @@
            Hours:
           </div>
           <div class="text-sm">
-           Mon-Fri: 9 AM - 9 PM
+           Sat-Thu: 7 AM - 2 AM
           </div>
           <div class="text-sm">
-           Sat-Sun: 10 AM - 6 PM
+           Firday: 2 PM - 12 AM
           </div>
          </div>
         </div>
@@ -604,11 +1124,11 @@
        <div class="space-y-3">
         <div class="flex items-start space-x-3">
          <svg class="w-5 h-5 mt-1 flex-shrink-0" style="color: #667eea;" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /> <circle cx="12" cy="10" r="3" />
-         </svg><span id="pharmacy-3-address">654 South Avenue, Shopping Center</span>
+         </svg><span id="pharmacy-3-address">شارع الستين, Almudhbah, Taif 26576</span>
         </div>
         <div class="flex items-center space-x-3">
          <svg class="w-5 h-5 flex-shrink-0" style="color: #667eea;" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-         </svg><span id="pharmacy-3-phone">+1 (555) 567-8901</span>
+         </svg><span id="pharmacy-3-phone">+966552534440</span>
         </div>
         <div class="flex items-start space-x-3">
          <svg class="w-5 h-5 mt-1 flex-shrink-0" style="color: #667eea;" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /> <polyline points="12 6 12 12 16 14"></polyline>
@@ -618,7 +1138,13 @@
            Hours:
           </div>
           <div class="text-sm">
-           Open 24/7
+            Sat-Wed: 7:00 AM - 2:00 AM
+          </div>
+            <div>
+            Thur: 7:00 AM - 12:00 AM
+          </div>
+          <div>
+           Firday: 4:00 PM - 12:00 AM
           </div>
          </div>
         </div>
@@ -683,7 +1209,7 @@
       <div>
        <h2 class="text-4xl font-bold mb-8 text-center">Security &amp; Marketing Solutions</h2>
        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12"><!-- CCTV Shop -->
-        <div class="p-8 rounded-2xl shadow-xl">
+        <div class="p-8 rounded-2xl shadow-xl cursor-pointer hover:shadow-2xl transition-all hover-lift" onclick="window.open('https://www.notion.so/cctv-2c3628df432b80c5be63fb1242a0062a?source=copy_link', '_blank', 'noopener,noreferrer')">
          <div class="flex items-center justify-center mb-6">
           <svg class="w-20 h-20" style="color: #667eea;" viewbox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="16" width="24" height="18" rx="3" fill="currentColor" opacity="0.2" /> <circle cx="32" cy="25" r="6" stroke="currentColor" stroke-width="2.5" fill="none" /> <circle cx="32" cy="25" r="3" fill="currentColor" /> <path d="M32 34v8M26 42h12M28 48h8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
           </svg>
@@ -748,7 +1274,7 @@
        </svg>
        <h3 class="text-2xl font-bold mb-3">Call Us</h3>
        <p class="text-lg opacity-75">Available 24/7 for emergencies</p>
-       <p class="mt-4 font-semibold">+1 (555) 123-4567</p>
+       <p class="mt-4 font-semibold">+966533326225</p>
       </div>
       <div class="text-center p-8 rounded-xl shadow-lg transition-all hover:scale-105">
        <svg class="w-16 h-16 mx-auto mb-4" style="color: #667eea;" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /> <circle cx="12" cy="10" r="3" />
@@ -763,7 +1289,7 @@
        </svg>
        <h3 class="text-2xl font-bold mb-3">Email Us</h3>
        <p class="text-lg opacity-75">Quick response guaranteed</p>
-       <p class="mt-4 font-semibold">info@maghanim.com</p>
+       <p class="mt-4 font-semibold">maghanimmedical@gmail.com</p>
       </div>
      </div>
     </div>
@@ -801,7 +1327,7 @@
      </div>
     </div>
     <div class="border-t pt-8 text-center opacity-75" id="footer-border">
-     <p id="footer-copyright">© 2024 Maghanim Medical Co LLC. All rights reserved.</p>
+     <p id="footer-copyright"> 2024 Maghanim Medical Co LLC. All rights reserved.</p>
     </div>
    </div>
   </footer>
@@ -824,7 +1350,7 @@
       clinics_page_title: "Our Medical Clinics",
       clinics_page_subtitle: "State-of-the-art facilities providing comprehensive healthcare",
       clinic_1_name: "Dose Clinic",
-      clinic_1_address: "ش  رع الستين, Almudhbah, Taif 26576",
+      clinic_1_address: "شارع الستين, Almudhbah, Taif 26576",
       clinic_1_phone: "0127433334",
       clinic_2_name: "Al Taj Clinic",
       clinic_2_address: "شارع الستين, Almudhbah, Taif 26576",
@@ -843,10 +1369,339 @@
       services_page_title: "Complete Healthcare & Security Solutions",
       services_page_subtitle: "Comprehensive services tailored to your needs",
       footer_about: "Leading healthcare provider with multiple clinics, pharmacies, and security solutions",
-      footer_copyright: "© 2024 Maghanim Medical Co LLC. All rights reserved."
+      footer_copyright: " 2024 Maghanim Medical Co LLC. All rights reserved."
     };
 
     let currentPage = 'home';
+    let currentLanguage = 'en';
+
+    const translations = {
+      en: {
+        nav_home: 'Home',
+        nav_clinics: 'Clinics',
+        nav_pharmacies: 'Pharmacies',
+        nav_services: 'Services',
+        nav_contact: 'Contact',
+        hero_title: 'Transforming Healthcare Through Innovation',
+        hero_subtitle: 'Comprehensive medical services, premium pharmacies, and cutting-edge security solutions',
+        cta_primary: 'Explore Our Services',
+        cta_secondary: 'Contact Us Today',
+        stat_locations: 'Locations',
+        stat_customers: 'Happy Customers',
+        stat_experience: 'Years Experience',
+        stat_team: 'Team Members',
+        services_title: 'Our Services',
+        medical_clinics: 'Medical Clinics',
+        clinics_locations: '2 Locations',
+        clinics_desc: 'State-of-the-art medical facilities with experienced healthcare professionals',
+        premium_pharmacies: 'Premium Pharmacies',
+        pharmacies_locations: '3 Locations',
+        pharmacies_desc: 'Certified pharmacists providing quality medications and health consultations',
+        security_solutions: 'Security Solutions',
+        security_locations: '2 Locations',
+        security_desc: 'CCTV shop & Digital marketing services',
+        clinics_page_title: 'Our Medical Clinics',
+        clinics_page_subtitle: 'State-of-the-art facilities providing comprehensive healthcare',
+        hours: 'Hours',
+        services_offered: 'Services Offered',
+        general_medicine: 'General Medicine',
+        pediatrics: 'Pediatrics',
+        emergency_care: 'Emergency Care',
+        laboratory_services: 'Laboratory Services',
+        family_medicine: 'Family Medicine',
+        womens_health: "Women's Health",
+        chronic_disease: 'Chronic Disease Management',
+        preventive_care: 'Preventive Care',
+        pharmacies_page_title: 'Our Premium Pharmacies',
+        pharmacies_page_subtitle: 'Quality medications and expert pharmaceutical care',
+        services_page_title: 'Complete Healthcare & Security Solutions',
+        services_page_subtitle: 'Comprehensive services tailored to your needs',
+        medical_services: 'Medical Services',
+        pharmacy_services: 'Pharmacy Services',
+        security_marketing: 'Security & Marketing Solutions',
+        cctv_shop: 'CCTV Shop',
+        cctv_desc: 'Complete security camera solutions',
+        cctv_installation: 'Professional CCTV Installation',
+        cctv_monitoring: '24/7 Monitoring Systems',
+        cctv_hd: 'HD & IP Camera Solutions',
+        cctv_maintenance: 'System Maintenance & Support',
+        digital_marketing: 'Digital Marketing',
+        digital_desc: 'Comprehensive online marketing services',
+        digital_social: 'Social Media Management',
+        digital_seo: 'SEO & Content Marketing',
+        digital_ads: 'Paid Advertising Campaigns',
+        digital_brand: 'Brand Strategy & Analytics',
+        prescription_filling: 'Prescription Filling',
+        prescription_desc: 'Fast and accurate medication dispensing',
+        consultations: 'Consultations',
+        consultations_desc: 'Expert pharmaceutical advice',
+        health_products: 'Health Products',
+        health_products_desc: 'Wide range of wellness items',
+        delivery_service: 'Delivery Service',
+        delivery_desc: 'Convenient home delivery available',
+        contact_title: 'Get In Touch',
+        contact_subtitle: "We're here to help with all your healthcare and security needs",
+        call_us: 'Call Us',
+        call_available: 'Available 24/7 for emergencies',
+        visit_us: 'Visit Us',
+        visit_locations: '6 Convenient Locations',
+        visit_clinics: '2 Medical Clinics',
+        visit_pharmacies: '3 Pharmacies',
+        visit_cctv: 'CCTV Shop & Digital Marketing',
+        email_us: 'Email Us',
+        email_response: 'Quick response guaranteed',
+        footer_about: 'Leading healthcare provider with multiple clinics, pharmacies, and security solutions',
+        footer_quick_links: 'Quick Links',
+        footer_services: 'Our Services',
+        footer_clinics: '2 Medical Clinics',
+        footer_pharmacies: '3 Premium Pharmacies',
+        footer_cctv: 'CCTV Shop',
+        footer_marketing: 'Digital Marketing'
+      },
+        ar: {
+        nav_home: 'الرئيسية',
+        nav_clinics: 'العيادات',
+        nav_pharmacies: 'الصيدليات',
+        nav_services: 'الخدمات',
+        nav_contact: 'اتصل بنا',
+        hero_title: 'تحويل الرعاية الصحية من خلال الابتكار',
+        hero_subtitle: 'خدمات طبية شاملة وصيدليات متميزة وحلول أمنية متطورة',
+        cta_primary: 'استكشف خدماتنا',
+        cta_secondary: 'اتصل بنا اليوم',
+        stat_locations: 'مواقع',
+        stat_customers: 'عميل سعيد',
+        stat_experience: 'سنوات من الخبرة',
+        stat_team: 'أعضاء الفريق',
+        services_title: 'خدماتنا',
+        medical_clinics: 'العيادات الطبية',
+        clinics_locations: 'موقعان',
+        clinics_desc: 'مرافق طبية حديثة مع متخصصي رعاية صحية ذوي خبرة',
+        premium_pharmacies: 'صيدليات متميزة',
+        pharmacies_locations: '3 مواقع',
+        pharmacies_desc: 'صيادلة معتمدون يقدمون أدوية عالية الجودة واستشارات صحية',
+        security_solutions: 'حلول الأمن',
+        security_locations: 'موقعان',
+        security_desc: 'متجر كاميرات المراقبة والتسويق الرقمي',
+        clinics_page_title: 'عياداتنا الطبية',
+        clinics_page_subtitle: 'مرافق حديثة توفر رعاية صحية شاملة',
+        hours: 'ساعات العمل',
+        services_offered: 'الخدمات المقدمة',
+        general_medicine: 'الطب العام',
+        pediatrics: 'طب الأطفال',
+        emergency_care: 'الرعاية الطارئة',
+        laboratory_services: 'خدمات المختبر',
+        family_medicine: 'طب الأسرة',
+        womens_health: 'صحة المرأة',
+        chronic_disease: 'إدارة الأمراض المزمنة',
+        preventive_care: 'الرعاية الوقائية',
+        pharmacies_page_title: 'صيدلياتنا المتميزة',
+        pharmacies_page_subtitle: 'أدوية عالية الجودة ورعاية صيدلانية متخصصة',
+        services_page_title: 'حلول رعاية صحية وأمنية متكاملة',
+        services_page_subtitle: 'خدمات شاملة مصممة خصيصاً لتلبية احتياجاتك',
+        medical_services: 'الخدمات الطبية',
+        pharmacy_services: 'خدمات الصيدلية',
+        security_marketing: 'حلول الأمن والتسويق',
+        cctv_shop: 'متجر كاميرات المراقبة',
+        cctv_desc: 'حلول كاملة لكاميرات الأمن',
+        cctv_installation: 'تركيب احترافي لكاميرات المراقبة',
+        cctv_monitoring: 'أنظمة مراقبة على مدار الساعة',
+        cctv_hd: 'حلول كاميرات عالية الدقة وIP',
+        cctv_maintenance: 'صيانة ودعم الأنظمة',
+        digital_marketing: 'التسويق الرقمي',
+        digital_desc: 'خدمات تسويق إلكتروني شاملة',
+        digital_social: 'إدارة وسائل التواصل الاجتماعي',
+        digital_seo: 'تحسين محركات البحث والمحتوى',
+        digital_ads: 'حملات إعلانية مدفوعة',
+        digital_brand: 'استراتيجية العلامة التجارية والتحليلات',
+        prescription_filling: 'صرف الوصفات الطبية',
+        prescription_desc: 'صرف دقيق وسريع للأدوية',
+        consultations: 'الاستشارات',
+        consultations_desc: 'نصائح صيدلانية متخصصة',
+        health_products: 'المنتجات الصحية',
+        health_products_desc: 'مجموعة واسعة من منتجات الصحة',
+        delivery_service: 'خدمة التوصيل',
+        delivery_desc: 'توصيل منزلي مريح',
+        contact_title: 'تواصل معنا',
+        contact_subtitle: 'نحن هنا لمساعدتك في جميع احتياجاتك الصحية والأمنية',
+        call_us: 'اتصل بنا',
+        call_available: 'متاح على مدار الساعة للطوارئ',
+        visit_us: 'قم بزيارتنا',
+        visit_locations: '6 مواقع مريحة',
+        visit_clinics: 'عيادتان طبيتان',
+        visit_pharmacies: '3 صيدليات',
+        visit_cctv: 'متجر كاميرات المراقبة والتسويق الرقمي',
+        email_us: 'راسلنا',
+        email_response: 'استجابة سريعة مضمونة',
+        footer_about: 'مزود رعاية صحية رائد مع عيادات وصيدليات متعددة وحلول أمنية',
+        footer_quick_links: 'روابط سريعة',
+        footer_services: 'خدماتنا',
+        footer_clinics: 'عيادتان طبيتان',
+        footer_pharmacies: '3 صيدليات متميزة',
+        footer_cctv: 'متجر كاميرات المراقبة',
+        footer_marketing: 'التسويق الرقمي'
+      }
+    };
+
+    function changeLanguage(lang) {
+      currentLanguage = lang;
+      const t = translations[lang];
+      
+      // Update direction for Arabic
+      document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      
+      // Update company name based on language
+      const companyName = lang === 'ar' ? 'شركة مغانم الطبية ذ م م' : 'Maghanim Medical Co LLC';
+      document.getElementById('company-name-nav').textContent = companyName;
+      document.getElementById('footer-company-name').textContent = companyName;
+      
+      // Update navigation
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks[0].textContent = t.nav_home;
+      navLinks[1].textContent = t.nav_clinics;
+      navLinks[2].textContent = t.nav_pharmacies;
+      navLinks[3].textContent = t.nav_services;
+      navLinks[4].textContent = t.nav_contact;
+      navLinks[5].textContent = t.nav_home;
+      navLinks[6].textContent = t.nav_clinics;
+      navLinks[7].textContent = t.nav_pharmacies;
+      navLinks[8].textContent = t.nav_services;
+      navLinks[9].textContent = t.nav_contact;
+      
+      // Update language buttons
+      const langButtons = document.querySelectorAll('.lang-btn');
+      langButtons.forEach(btn => {
+        btn.style.backgroundColor = '';
+        btn.style.color = '';
+      });
+      document.getElementById('lang-' + lang).style.backgroundColor = '#667eea';
+      document.getElementById('lang-' + lang).style.color = 'white';
+      document.getElementById('lang-' + lang + '-mobile').style.backgroundColor = '#667eea';
+      document.getElementById('lang-' + lang + '-mobile').style.color = 'white';
+      
+      // Update home page
+      document.getElementById('hero-title').textContent = t.hero_title;
+      document.getElementById('hero-subtitle').textContent = t.hero_subtitle;
+      document.getElementById('cta-primary').textContent = t.cta_primary;
+      document.getElementById('cta-secondary').textContent = t.cta_secondary;
+      
+      // Update stats
+      document.querySelectorAll('#stats-section .text-lg')[0].textContent = t.stat_locations;
+      document.querySelectorAll('#stats-section .text-lg')[1].textContent = t.stat_customers;
+      document.querySelectorAll('#stats-section .text-lg')[2].textContent = t.stat_experience;
+      document.querySelectorAll('#stats-section .text-lg')[3].textContent = t.stat_team;
+      
+      // Update services overview
+      document.getElementById('services-overview-heading').textContent = t.services_title;
+      document.querySelectorAll('#services-overview h3')[0].textContent = t.medical_clinics;
+      document.querySelectorAll('#services-overview .text-3xl')[0].textContent = t.clinics_locations;
+      document.querySelectorAll('#services-overview p')[0].textContent = t.clinics_desc;
+      
+      document.querySelectorAll('#services-overview h3')[1].textContent = t.premium_pharmacies;
+      document.querySelectorAll('#services-overview .text-3xl')[1].textContent = t.pharmacies_locations;
+      document.querySelectorAll('#services-overview p')[1].textContent = t.pharmacies_desc;
+      
+      document.querySelectorAll('#services-overview h3')[2].textContent = t.digital_solutions;
+      document.querySelectorAll('#services-overview .text-3xl')[2].textContent = t.digital_locations;
+      document.querySelectorAll('#services-overview p')[2].textContent = t.digital_desc;
+      
+      // Update clinics page
+      document.getElementById('clinics-page-title').textContent = t.clinics_page_title;
+      document.getElementById('clinics-page-subtitle').textContent = t.clinics_page_subtitle;
+      
+      // Update pharmacies page
+      document.getElementById('pharmacies-page-title').textContent = t.pharmacies_page_title;
+      document.getElementById('pharmacies-page-subtitle').textContent = t.pharmacies_page_subtitle;
+      
+      // Update services page
+      document.getElementById('services-page-title').textContent = t.services_page_title;
+      document.getElementById('services-page-subtitle').textContent = t.services_page_subtitle;
+      document.querySelectorAll('#services-detailed h2')[0].textContent = t.medical_services;
+      document.querySelectorAll('#services-detailed h2')[1].textContent = t.pharmacy_services;
+      document.querySelectorAll('#services-detailed h2')[2].textContent = t.security_marketing;
+      
+      // Update service cards on services page
+      const serviceDetailCards = document.querySelectorAll('#services-detailed .p-6 h3');
+      if (serviceDetailCards.length >= 4) {
+        serviceDetailCards[0].textContent = t.general_medicine;
+        serviceDetailCards[1].textContent = t.pediatrics;
+        serviceDetailCards[2].textContent = t.womens_health;
+        serviceDetailCards[3].textContent = t.emergency_care;
+        serviceDetailCards[4].textContent = t.prescription_filling;
+        serviceDetailCards[5].textContent = t.consultations;
+        serviceDetailCards[6].textContent = t.health_products;
+        serviceDetailCards[7].textContent = t.delivery_service;
+      }
+      
+      const serviceDetailDescs = document.querySelectorAll('#services-detailed .p-6 p');
+      if (serviceDetailDescs.length >= 4) {
+        serviceDetailDescs[0].textContent = t.general_medicine + ' - ' + t.clinics_desc.split('with')[0];
+        serviceDetailDescs[1].textContent = t.pediatrics + ' - ' + t.clinics_desc.split('with')[0];
+        serviceDetailDescs[2].textContent = t.womens_health + ' - ' + t.chronic_disease;
+        serviceDetailDescs[3].textContent = t.emergency_care + ' - ' + t.call_available;
+        serviceDetailDescs[4].textContent = t.prescription_desc;
+        serviceDetailDescs[5].textContent = t.consultations_desc;
+        serviceDetailDescs[6].textContent = t.health_products_desc;
+        serviceDetailDescs[7].textContent = t.delivery_desc;
+      }
+      
+      // Update CCTV and Digital Marketing sections
+      const securityCards = document.querySelectorAll('#services-detailed > div:last-child .p-8');
+      if (securityCards.length >= 2) {
+        securityCards[0].querySelector('h3').textContent = t.cctv_shop;
+        securityCards[0].querySelector('p').textContent = t.cctv_desc;
+        const cctvItems = securityCards[0].querySelectorAll('li span');
+        cctvItems[0].textContent = t.cctv_installation;
+        cctvItems[1].textContent = t.cctv_monitoring;
+        cctvItems[2].textContent = t.cctv_hd;
+        cctvItems[3].textContent = t.cctv_maintenance;
+        
+        securityCards[1].querySelector('h3').textContent = t.digital_marketing;
+        securityCards[1].querySelector('p').textContent = t.digital_desc;
+        const digitalItems = securityCards[1].querySelectorAll('li span');
+        digitalItems[0].textContent = t.digital_social;
+        digitalItems[1].textContent = t.digital_seo;
+        digitalItems[2].textContent = t.digital_ads;
+        digitalItems[3].textContent = t.digital_brand;
+      }
+      
+      // Update contact page
+      document.querySelector('#contact-page h1').textContent = t.contact_title;
+      document.querySelector('#contact-page section p').textContent = t.contact_subtitle;
+      
+      const contactCards = document.querySelectorAll('#contact-content h3');
+      contactCards[0].textContent = t.call_us;
+      contactCards[1].textContent = t.visit_us;
+      contactCards[2].textContent = t.email_us;
+      
+      const contactDescs = document.querySelectorAll('#contact-content .text-lg');
+      contactDescs[0].textContent = t.call_available;
+      contactDescs[1].textContent = t.visit_locations;
+      contactDescs[2].textContent = t.email_response;
+      
+      const visitLinks = document.querySelectorAll('#contact-content button');
+      visitLinks[0].textContent = t.visit_clinics;
+      visitLinks[1].textContent = t.visit_pharmacies;
+      visitLinks[2].textContent = t.visit_cctv;
+      
+      // Update footer
+      document.getElementById('footer-about').textContent = t.footer_about;
+      document.querySelectorAll('#footer h4')[0].textContent = t.footer_quick_links;
+      document.querySelectorAll('#footer h4')[1].textContent = t.footer_services;
+      
+      const footerLinks = document.querySelectorAll('#footer button');
+      footerLinks[0].textContent = t.nav_home;
+      footerLinks[1].textContent = t.nav_clinics;
+      footerLinks[2].textContent = t.nav_pharmacies;
+      footerLinks[3].textContent = t.nav_digital;
+      footerLinks[4].textContent = t.nav_services;
+      footerLinks[5].textContent = t.nav_contact;
+      
+      const footerServices = document.querySelectorAll('#footer ul')[1].querySelectorAll('li');
+      footerServices[0].textContent = t.footer_clinics;
+      footerServices[1].textContent = t.footer_pharmacies;
+      footerServices[2].textContent = t.footer_cctv;
+      footerServices[3].textContent = t.footer_marketing;
+    }
 
     function navigateToPage(page) {
       // Hide all pages
@@ -896,6 +1751,7 @@
       document.getElementById('services-overview').style.backgroundColor = surfaceColor;
       document.getElementById('clinics-content').style.backgroundColor = surfaceColor;
       document.getElementById('pharmacies-content').style.backgroundColor = surfaceColor;
+      document.getElementById('digital-content').style.backgroundColor = surfaceColor;
       document.getElementById('services-detailed').style.backgroundColor = surfaceColor;
       document.getElementById('contact-content').style.backgroundColor = surfaceColor;
       
@@ -921,10 +1777,16 @@
       // Home page icons
       document.getElementById('home-clinics-icon-bg').style.backgroundColor = primaryColor + '20';
       document.getElementById('home-pharmacies-icon-bg').style.backgroundColor = primaryColor + '20';
-      document.getElementById('home-cctv-icon-bg').style.backgroundColor = primaryColor + '20';
+      document.getElementById('home-digital-icon-bg').style.backgroundColor = primaryColor + '20';
       document.getElementById('home-clinics-icon').style.color = primaryColor;
       document.getElementById('home-pharmacies-icon').style.color = primaryColor;
-      document.getElementById('home-cctv-icon').style.color = primaryColor;
+      document.getElementById('home-digital-icon').style.color = primaryColor;
+
+      // Digital page icons
+      document.getElementById('digital-cctv-icon-bg').style.backgroundColor = primaryColor + '20';
+      document.getElementById('digital-marketing-icon-bg').style.backgroundColor = primaryColor + '20';
+      document.getElementById('digital-cctv-icon').style.color = primaryColor;
+      document.getElementById('digital-marketing-icon').style.color = primaryColor;
 
       // Clinic logo backgrounds (no styling needed for images)
 
@@ -932,9 +1794,6 @@
       document.getElementById('pharmacy-1-icon-bg').style.backgroundColor = primaryColor + '20';
       document.getElementById('pharmacy-2-icon-bg').style.backgroundColor = primaryColor + '20';
       document.getElementById('pharmacy-3-icon-bg').style.backgroundColor = primaryColor + '20';
-      document.getElementById('pharmacy-1-icon').style.color = primaryColor;
-      document.getElementById('pharmacy-2-icon').style.color = primaryColor;
-      document.getElementById('pharmacy-3-icon').style.color = primaryColor;
 
       // Buttons
       document.getElementById('cta-primary').style.backgroundColor = primaryColor;
@@ -1092,8 +1951,196 @@
       });
     }
 
+    // Intersection Observer for scroll animations
+    function initScrollAnimations() {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in-up');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all cards and sections
+      document.querySelectorAll('.service-card, .location-card, #stats-section > div > div').forEach(el => {
+        observer.observe(el);
+      });
+    }
+
+    // Parallax scroll effect
+    function initParallax() {
+      let ticking = false;
+      
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax-layer');
+            
+            parallaxElements.forEach((el, index) => {
+              const speed = (index + 1) * 0.1;
+              el.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+            
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    }
+
+    // Smooth reveal on page load
+    function pageLoadAnimations() {
+      const heroElements = document.querySelectorAll('#hero h1, #hero p, #hero button');
+      heroElements.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.animation = `fadeInUp 0.8s ease-out ${index * 0.15}s forwards`;
+      });
+
+      // Animate stats with counting effect
+      const stats = document.querySelectorAll('.text-5xl');
+      stats.forEach((stat, index) => {
+        const target = stat.textContent;
+        if (target.includes('+') || target.includes('K')) {
+          animateNumber(stat, target, index * 100);
+        }
+      });
+    }
+
+    // Number counting animation
+    function animateNumber(element, targetText, delay) {
+      setTimeout(() => {
+        let hasPlus = targetText.includes('+');
+        let hasK = targetText.includes('K');
+        let number = parseInt(targetText.replace(/[^0-9]/g, ''));
+        let current = 0;
+        let increment = number / 50;
+        
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= number) {
+            current = number;
+            clearInterval(timer);
+          }
+          
+          let display = Math.floor(current);
+          if (hasK) display += 'K';
+          if (hasPlus) display += '+';
+          element.textContent = display;
+        }, 30);
+      }, delay);
+    }
+
+    // Add hover tilt effect to cards
+    function initCardTilt() {
+      const cards = document.querySelectorAll('.service-card, .location-card');
+      
+      cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const rotateX = (y - centerY) / 20;
+          const rotateY = (centerX - x) / 20;
+          
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-12px) scale(1.02)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      });
+    }
+
+    // Add ripple effect to buttons
+    function initRippleEffect() {
+      const buttons = document.querySelectorAll('.btn-primary, .btn-secondary');
+      
+      buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          const ripple = document.createElement('span');
+          const rect = this.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          const x = e.clientX - rect.left - size / 2;
+          const y = e.clientY - rect.top - size / 2;
+          
+          ripple.style.width = ripple.style.height = size + 'px';
+          ripple.style.left = x + 'px';
+          ripple.style.top = y + 'px';
+          ripple.style.position = 'absolute';
+          ripple.style.borderRadius = '50%';
+          ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+          ripple.style.transform = 'scale(0)';
+          ripple.style.animation = 'ripple 0.6s ease-out';
+          ripple.style.pointerEvents = 'none';
+          
+          this.appendChild(ripple);
+          
+          setTimeout(() => ripple.remove(), 600);
+        });
+      });
+      
+      // Add ripple animation
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes ripple {
+          to {
+            transform: scale(4);
+            opacity: 0;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    // Smooth page transitions
+    function enhancePageTransitions() {
+      const originalNavigate = window.navigateToPage;
+      window.navigateToPage = function(page) {
+        // Fade out current page
+        const currentPage = document.querySelector('.page-content.active');
+        if (currentPage) {
+          currentPage.style.transition = 'opacity 0.3s ease-out';
+          currentPage.style.opacity = '0';
+          
+          setTimeout(() => {
+            originalNavigate(page);
+            const newPage = document.querySelector('.page-content.active');
+            newPage.style.opacity = '0';
+            setTimeout(() => {
+              newPage.style.transition = 'opacity 0.5s ease-in';
+              newPage.style.opacity = '1';
+              initScrollAnimations();
+            }, 50);
+          }, 300);
+        } else {
+          originalNavigate(page);
+        }
+      };
+    }
+
+    // Initialize all enhancements
+    setTimeout(() => {
+      initScrollAnimations();
+      initParallax();
+      pageLoadAnimations();
+      initCardTilt();
+      initRippleEffect();
+      enhancePageTransitions();
+    }, 100);
+
     // Initialize
     navigateToPage('home');
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9aa525bee3b3edc3',t:'MTc2NTEyMjI5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9aabc6efa166ed2b',t:'MTc2NTE5MTgxNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
